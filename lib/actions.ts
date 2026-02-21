@@ -17,7 +17,7 @@ export async function createArticle(data: any) {
     }
 }
 
-export async function updateArticle(data: any, id?: number) {
+export async function updateArticle(data: any, id?: string) {
     const res = await fetch(`${baseUrl}/${id}`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
@@ -26,6 +26,21 @@ export async function updateArticle(data: any, id?: number) {
 
     if (res.ok) {
         redirect(`/article/${id}`);
+    }
+}
+
+export async function submitArticle(id: string | undefined, previous: any, formData: FormData) {
+    const rawFormData = {
+        author: formData.get("author"),
+        title: formData.get("title"),
+        subtitle: formData.get("subtitle"),
+        content: formData.get("content"),
+    }
+
+    if (id) {
+        await updateArticle(rawFormData, id)
+    } else {
+        await createArticle(rawFormData)
     }
 }
 
