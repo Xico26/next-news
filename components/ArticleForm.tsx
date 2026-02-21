@@ -2,6 +2,7 @@
 
 import {useRouter} from "next/navigation";
 import {ChangeEvent, SubmitEvent, useState} from "react";
+import {createArticle, updateArticle} from "@/lib/actions";
 
 export default function ArticleForm({originalArticle}: {originalArticle?: Article}) {
     const router = useRouter();
@@ -29,35 +30,12 @@ export default function ArticleForm({originalArticle}: {originalArticle?: Articl
         e.preventDefault();
         setIsSubmitting(true);
 
-        try {
-            let res;
-            switch (editMode) {
-                case false:
-                    res = await fetch("https://69983289d66520f95f16d3e3.mockapi.io/api/article", {
-                        method: "POST",
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify(article)
-                    });
-                    break;
-                case true:
-                    res = await fetch(`https://69983289d66520f95f16d3e3.mockapi.io/api/article/${originalArticle?.id}`, {
-                        method: "PUT",
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify(article)
-                    });
-                    break;
-            }
-
-            if (res.ok) {
-                const data = await res.json();
-                console.log(data)
-                router.push(`/article/${data.id}`);
-            }
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setIsSubmitting(false);
+        if (editMode && originalArticle?.id) {
+            await updateArticle(article, originalArticle?.id)
+        } else {
+            await createArticle(article)
         }
+        setIsSubmitting(false);
     }
 
     return (
