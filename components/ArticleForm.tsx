@@ -17,8 +17,8 @@ export default function ArticleForm({originalArticle}: {originalArticle?: Articl
             <label htmlFor="subtitle">Subtitle</label>
             <textarea name="subtitle" className="border p-2 rounded-md" defaultValue={originalArticle?.subtitle} placeholder="Subtitle" required/>
             <label htmlFor="content">Content</label>
-            <textarea name="content" className="border p-2 rounded-md" defaultValue={originalArticle?.content} placeholder="Content" required/>
-            <button type="submit" disabled={pending} className="bg-blue-500 cursor-pointer rounded-md">
+            <textarea name="content" className="border p-2 rounded-md h-96" defaultValue={originalArticle?.content} placeholder="Content" required/>
+            <button type="submit" disabled={pending} className="bg-blue-500 text-white h-8 cursor-pointer rounded-md">
                 {pending ? "Submitting..." : "Submit Article"}
             </button>
         </form>

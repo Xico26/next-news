@@ -6,12 +6,12 @@ export default async function Home() {
   const articles = await data.json();
 
   return (
-      <main className="flex min-h-screen min-w-screen max-w-3xl flex-col items-center justify-center bg-white dark:bg-black sm:items-start p-2">
+      <main className="flex min-h-screen flex-col items-center justify-center bg-white  sm:items-start p-2">
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+          <p className="max-w-md text-lg leading-8 text-zinc-600">
             Your place for news.
           </p>
-          <Link className="bg-blue-500 p-2 rounded-md" href={"/new"}>Add Article</Link>
+          <Link className="bg-blue-500 p-2 rounded-md text-white" href={"/new"}>Add Article</Link>
           <div className="flex flex-wrap items-center gap-4 text-center sm:items-start sm:text-left ">
             {
               articles.map((article: Article) => (

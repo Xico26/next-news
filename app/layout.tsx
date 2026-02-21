@@ -26,11 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen p-4 bg-zinc-50 font-sans dark:bg-black`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-zinc-50 font-sans`}
       >
-      <div className="p-2">
+      <div className="p-2 bg-black text-white">
           <Link className="font-bold text-3xl" href={"/"}>NextNews</Link>
-          <hr/>
       </div>
         {children}
       </body>
