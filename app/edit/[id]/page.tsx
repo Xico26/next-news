@@ -12,7 +12,7 @@ export default async function EditArticle({ params } : {params: Promise<{id: str
             <div className="flex justify-center">
                 <div className="flex flex-col w-1/3">
                     <h1 className="text-4xl font-bold">Edit Article</h1>
-                    <ArticleForm />
+                    <ArticleForm originalArticle={article} />
                 </div>
             </div>
         </div>
