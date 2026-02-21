@@ -1,11 +1,9 @@
 "use client"
 
-import {useRouter} from "next/navigation";
 import {ChangeEvent, SubmitEvent, useState} from "react";
 import {createArticle, updateArticle} from "@/lib/actions";
 
 export default function ArticleForm({originalArticle}: {originalArticle?: Article}) {
-    const router = useRouter();
     let editMode: boolean = false;
 
     const [article, setArticle] = useState({
